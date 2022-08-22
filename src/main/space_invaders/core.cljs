@@ -1,4 +1,7 @@
 (ns space-invaders.core
+  "Project starting point.
+  After code is hot-reloaded, `render` will be called so view changes occur immediately.
+  Adding or removing events, subscriptions, etc. will require a refresh."
   (:require
    [oops.core :refer [ocall ocall+ oget]]
    [reagent.dom :as rd]
