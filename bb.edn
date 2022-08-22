@@ -1,0 +1,2 @@
+{:tasks
+ {watch (shell "npx shadow-cljs watch app")}}

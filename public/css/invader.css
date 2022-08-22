@@ -1,0 +1,10 @@
+#invaders {
+    position: absolute;
+    width: 325px;
+}
+
+.invader {
+    height: 40px;
+    padding: 5px;
+    width: 55px;
+}
