@@ -1,8 +1,7 @@
 ;; shadow-cljs configuration
 {:source-paths
- ["src/dev"
-  "src/main"
-  "src/test"]
+ ["src/"
+  "test/"]
 
  :dependencies
  [[binaryage/oops "0.7.2"]
@@ -14,4 +13,9 @@
  :builds
  {:app
   {:target :browser
-   :modules {:main {:init-fn space-invaders.core/start}}}}}
+   :modules {:main {:init-fn space-invaders.core/start}}}
+  :test
+  {:target :karma
+   :output-to "out/test.js"
+   :ns-regexp "-test$"
+   :autorun true}}}
