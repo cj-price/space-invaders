@@ -1,0 +1,13 @@
+#+title: Space Invaders
+#+author: C.J. Price
+
+* Getting Started with Development
+** Installation
+To start working on this project, some libraries must be downloaded:
+1) clojure
+2) node and npm (preferably using nvm)
+3) [[https://github.com/thheller/shadow-cljs][shadow-cljs]]
+4) [[https://babashka.org/][babashka]]
+
+** Development
+Next, we need to setup a dev http server to see the changes that we made. Simply run ~bb watch~ at the project root. After the build is completed, the application should be on port ~3449~. Navigating to ~http://localhost:3449~ should result in an alien invasion.

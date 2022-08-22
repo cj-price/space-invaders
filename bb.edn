@@ -1,2 +1,5 @@
 {:tasks
- {watch (shell "npx shadow-cljs watch app")}}
+ {help (shell "cat README.org")
+  watch (do
+          (shell "npm i")
+          (shell "npx shadow-cljs watch app"))}}
