@@ -25,7 +25,7 @@
  (fn [_ _]
    ;; Initial DB
    ;; TODO spec out db and add global interceptor to check db
-   {:db {::invaders/direction :right
+   {:db {::invaders/direction (rand-nth [:left :right])
          ::invaders/invaders {}
          ::invaders/x 0
          ::ship/moving-left? false
