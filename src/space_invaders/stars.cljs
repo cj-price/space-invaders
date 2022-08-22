@@ -11,12 +11,10 @@
         :speed 0.75}})
 
 (defn- gen-star [screen-width]
-  (let [{:keys [scale speed]} (-> STAR_SIZES seq rand-nth second)]
-    [(gensym "star") {:rotate (rand-int 360)
-                      :scale scale
-                      :speed speed
-                      :x (rand-int screen-width)
-                      :y -8}]))
+  [(gensym "star") (merge {:rotate (rand-int 360)
+                           :x (rand-int screen-width)
+                           :y -8}
+                          (-> STAR_SIZES seq rand-nth second))])
 
 (defn- star [{:keys [rotate scale x y]}]
   [:img.star {:src "images/star.svg"
