@@ -8,6 +8,10 @@ To start working on this project, some libraries must be downloaded:
 2) node and npm (preferably using nvm)
 3) [[https://github.com/thheller/shadow-cljs][shadow-cljs]]
 4) [[https://babashka.org/][babashka]]
+5) firefox (optional, for testing)
 
 ** Development
 Next, we need to setup a dev http server to see the changes that we made. Simply run ~bb watch~ at the project root. After the build is completed, the application should be on port ~3449~. Navigating to ~http://localhost:3449~ should result in an alien invasion.
+
+** Testing
+To run tests, simply run `bb test`. Firefox is needed for testing.

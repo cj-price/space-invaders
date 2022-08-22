@@ -1,6 +1,9 @@
 {:tasks
- {help  (shell "cat README.org")
-  test  (do (shell "npx shadow-cljs compile test")
-            (shell "npx karma start --single-run"))
-  watch (do (shell "npm i")
-            (shell "npx shadow-cljs watch app"))}}
+ {-install-deps (shell "npm i")
+
+  test  {:depends [-install-deps]
+         :task (do (shell "npx shadow-cljs compile test")
+                   (shell "npx karma start --single-run"))}
+  watch {:depends [-install-deps]
+         :task (shell "npx shadow-cljs watch app")}
+  help  (shell "cat README.org")}}
