@@ -2,6 +2,7 @@
   (:require
    [oops.core :refer [oget oset!]]
    [re-frame.core :as rf]
+   [space-invaders.bullet :as bullet]
    [space-invaders.util :refer [element-in-bounds?]]))
 
 (def SHIP_SPEED 18)
@@ -62,6 +63,7 @@
                 (case (oget e :key)
                   "ArrowLeft" (rf/dispatch [::start-moving-left])
                   "ArrowRight" (rf/dispatch [::start-moving-right])
+                  " " (rf/dispatch [::bullet/shoot-bullet])
                   :noop)))
        (oset! :onkeyup
               (fn [e]

@@ -8,11 +8,13 @@
    [re-frame.core :as rf]
    [space-invaders.invaders :as invaders]
    [space-invaders.ship :as ship]
-   [space-invaders.stars :as stars]))
+   [space-invaders.stars :as stars]
+   [space-invaders.bullet :as bullet]))
 
 (defn- base []
   [:<>
    [stars/view]
+   [bullet/view]
    [invaders/view]
    [ship/view]])
 
