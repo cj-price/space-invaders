@@ -1,13 +1,12 @@
 (ns space-invaders.bullet
   (:require
-   [re-frame.core :as rf]
-   #_[space-invaders.ship :as ship]))
+   [re-frame.core :as rf]))
 
 (defn view []
-  (let [x (rf/subscribe [::x])
-        y (rf/subscribe [::y])]
-    [:div#bullets
-     [:div.bullet {:style {:transform (str "translate(" @x "px, " @y "px)")}}]]))
+  (let [bullets (rf/subscribe [::bullets])]
+    (into [:div#bullets]
+          (for [{:as bullet :keys [x y]} @bullets]
+            [:div.bullet {:style {:transform (str "translate(" x "px, " y "px)")}}]))))
 
 (rf/reg-event-fx
  ::shoot-bullet
@@ -15,13 +14,22 @@
  (fn [{{:keys [height]} :screen
        db :db} _]
    (let [x (:space-invaders.ship/x db)]
-     {:db (assoc db
-                 ::x x
-                 ::y (- height 40))})))
+     {:db (update db ::bullets (fnil conj []) {:x x :y (- height 40)})})))
 
 (rf/reg-event-fx
  ::advance-bullets
- (fn []))
+ (fn [{{::keys [bullets] :as db} :db}]
+   {:db (assoc db ::bullets
+               (vec
+                (for [bullet bullets
+                      :let [new-bullet (update bullet :y - 40)]
+                      :when (pos? (:y new-bullet))]
+                  new-bullet)))}))
+
+(rf/reg-sub
+ ::bullets
+ (fn [db]
+   (::bullets db)))
 
 (rf/reg-sub
  ::x

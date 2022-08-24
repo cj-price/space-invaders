@@ -46,6 +46,7 @@
  (fn [_ _]
    {:fx [[:dispatch [::ship/movement-handler]]
          [:dispatch [::stars/update-star-positions]]
+         [:dispatch [::bullet/advance-bullets]]
          [:dispatch [::invaders/move-invaders]]
          [:dispatch-later {:ms 32 :dispatch [::game-loop]}]]}))
 
